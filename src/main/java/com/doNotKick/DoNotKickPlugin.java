@@ -12,6 +12,8 @@ import net.runelite.client.game.FriendChatManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
+import java.util.ArrayList;
+
 @Slf4j
 @PluginDescriptor(
 	name = "Do Not Kick"
@@ -53,15 +55,16 @@ public class DoNotKickPlugin extends Plugin
 			case Every:
 				break;
 		}
-		MenuEntry[] Test = new MenuEntry[client.getMenuEntries().length-1];
-		int inc=0;
-		for (int x=0; x<client.getMenuEntries().length; x++){
-			if(!client.getMenuEntries()[x].getOption().matches("Kick")){
-				Test[inc]=client.getMenuEntries()[x];
-				inc++;
-			}
+		ArrayList<MenuEntry> Test = new ArrayList<MenuEntry>();
+		for(MenuEntry entry:client.getMenuEntries()){
+			if(!entry.getOption().matches("Kick"))
+				Test.add(entry);
 		}
-		client.setMenuEntries(Test);
+		MenuEntry[] convertArray = new MenuEntry[Test.size()];
+		for(int x=0; x<Test.size(); x++) {
+			convertArray[x] = Test.get(x);
+		}
+		client.setMenuEntries(convertArray);
 	}
 
 	@Provides
