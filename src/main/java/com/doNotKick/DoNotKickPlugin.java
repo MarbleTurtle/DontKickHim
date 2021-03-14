@@ -11,6 +11,7 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.game.FriendChatManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.util.Text;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,9 @@ public class DoNotKickPlugin extends Plugin
 
 	@Subscribe
 	public void onMenuEntryAdded(MenuEntryAdded event){
+		if(event.getTarget().isEmpty()||!friendChatManager.isMember(Text.removeTags(event.getTarget()))){
+			return;
+		}
 		switch(config.scope()){
 			case All:
 				if(friendChatManager.getRank(event.getTarget()).getValue()==-1)
