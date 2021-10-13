@@ -71,18 +71,6 @@ public class DoNotKickPlugin extends Plugin
 				client.setMenuEntries(convertArray);
 			}
 		}
-		final ClanChannel clanChannel= client.getClanChannel();
-		if(clanChannel!=null){
-			if(!event.getTarget().isEmpty()&&clanChannel.findMember(Text.removeTags(event.getTarget()))!=null){
-				System.out.println(clanChannel.findMember(Text.removeTags(event.getTarget())).getRank());
-			}
-		}
-		final ClanChannel guestChannel= client.getGuestClanChannel();
-		if(guestChannel!=null){
-			if(!event.getTarget().isEmpty()&&guestChannel.findMember(Text.removeTags(event.getTarget()))!=null){
-				System.out.println(guestChannel.findMember(Text.removeTags(event.getTarget())).getRank());
-			}
-		}
 	}
 
 	@Provides
