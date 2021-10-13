@@ -16,22 +16,4 @@ public interface DoNotKickConfig extends Config
 	{
 		return KickMode.All;
 	}
-	@ConfigItem(
-			keyName = "Scope2",
-			name = "CC: Remove kicks from guest",
-			description = "For Clan Chat removes the kick option from guest."
-	)
-	default boolean guest()
-	{
-		return false;
-	}
-	@ConfigItem(
-			keyName = "Scope2",
-			name = "CC: Remove bans from guest",
-			description = "For Clan Chat removes the ban option from guest."
-	)
-	default boolean guest2()
-	{
-		return false;
-	}
 }
